@@ -39,3 +39,41 @@ process.stdout.write('\x1Bc');
 //   .where({cuisine: 'Hamburgers'})
 //   .select('id')
 //   .then(res => console.log(res));
+
+// knex('restaurants')
+//   .select()
+//   .then(res => console.log(res));
+
+// knex('restaurants')
+//   .select()
+//   .where({cuisine: 'Italian'})
+//   .limit(10)
+//   .then(res => console.log(res));
+
+// knex('restaurants')
+//   .select('id', 'name')
+//   .where({cuisine: 'Italian'})
+//   .limit(10)
+//   .then(res => console.log(res));
+
+// knex('restaurants')
+//   .count()
+//   .where('cuisine', 'Thai')
+//   .then(res => console.log(res));
+
+// knex('restaurants')
+//   .count()
+//   .then(res => console.log(res));
+
+// knex('restaurants')
+//   .count()
+//   .where({address_zipcode: '11372', cuisine: 'Thai' })
+//   .then(res => console.log(res));
+
+knex('restaurants')
+  .select('id', 'name')
+  .where('cuisine', 'Italian')
+  .whereIn('address_zipcode', [10012, 10013, 10014])
+  .orderBy('name', 'asc')
+  .limit(5)
+  .then(res => console.log(res));
